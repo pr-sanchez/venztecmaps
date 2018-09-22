@@ -1,0 +1,66 @@
+
+
+<agm-map [latitude]="lugar.lat" [longitude]="lugar.lng" [zoom]="16"  [scrollwheel]="true" [styles]="customStyle">
+ <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-2/512/map_marker_base-64.png'" >
+      <agm-info-window [isOpen]="true">
+        <h1>Estas aquí</h1>
+      </agm-info-window>
+    </agm-marker>
+  <agm-marker [latitude]="lugar.lat" [longitude]="lugar.lng"   [iconUrl]="'https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-2/512/map_marker_base-64.png'">
+    <agm-info-window [latitude]="lugar.lat" [longitude]="lugar.lng">
+                  <img *ngIf="lugar.foto" class="img-responsive" mat-card-image src="{{lugar.foto}}" alt="{{lugar.nombre}}">
+                  <h4><i><b>Negocio: </b></i>{{lugar.nombre}}</h4>
+                  <h4><i><b>Tipo de Negocio: </b></i>{{lugar.establecimiento}}</h4>
+                  <h4><i><b>Descripción: </b></i><p [innerHTML]="lugar.descripcion | linkifystr" [dynamicContent]="currentView"></p></h4>
+                  <h4><i><b>Redes:</b></i></h4>
+                  <a class="btn btn-social-icon btn-adn btn-adn-facebook" href="{{lugar.facebook}}" target="_blank" ><span class="fa fa-facebook"></span></a>
+                  <a class="btn btn-social-icon btn-adn btn-adn-twitter" href="{{lugar.twitter}}" target="_blank" ><span class="fa fa-twitter"></span></a>
+                  <a class="btn btn-social-icon btn-adn btn-adn-globe" href="{{lugar.web}}" target="_blank" ><span class="fa fa-globe"></span></a>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+
+  <hr/>
+
+
+<div class="well">
+  <a routerLink="/lugares">Lugares</a> / {{lugar.nombre}}
+</div>
+<div class="container">
+  <h1>{{lugar.nombre}}</h1>
+  <hr />
+  <small> </small>
+  <br />
+  <img *ngIf="lugar.foto" mat-card-image src="{{lugar.foto}}" alt="{{lugar.nombre}}">
+  <div *ngIf="lugar.estrella == '1'" class="">
+    <span  class="glyphicon glyphicon-star"></span>
+  </div>
+    <div *ngIf="lugar.estrella == '2'" class="">
+      <span  class="glyphicon glyphicon-star"></span>
+      <span  class="glyphicon glyphicon-star"></span>
+    </div>
+      <div *ngIf="lugar.estrella == '3'" class="">
+        <span  class="glyphicon glyphicon-star"></span>
+        <span  class="glyphicon glyphicon-star"></span>
+        <span  class="glyphicon glyphicon-star"></span>
+      </div>
+        <div *ngIf="lugar.estrella == '4'" class="">
+          <span  class="glyphicon glyphicon-star"></span>
+          <span  class="glyphicon glyphicon-star"></span>
+          <span  class="glyphicon glyphicon-star"></span>
+          <span  class="glyphicon glyphicon-star"></span>
+        </div>
+          <div *ngIf="lugar.estrella == '5'" class="">
+              <span  class="glyphicon glyphicon-star"></span>
+              <span  class="glyphicon glyphicon-star"></span>
+              <span  class="glyphicon glyphicon-star"></span>
+              <span  class="glyphicon glyphicon-star"></span>
+              <span  class="glyphicon glyphicon-star"></span>
+          </div>
+  <div class="well">
+    <p>
+      {{lugar.description}}
+    </p>
+    <b>Suscripción: {{lugar.plan}}</b>
+  </div>
+</div>

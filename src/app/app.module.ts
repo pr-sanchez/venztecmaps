@@ -44,7 +44,7 @@ import { DeleteReservacionComponent } from './delete-reservacion/delete-reservac
 import { DeleteLugarComponent } from './delete-lugar/delete-lugar.component';
 
 //Modules
-
+// import { AppRoutingModule } from './app-routing.module'
 
 //Services
 import {LugaresService} from "./services/lugares.service";
@@ -52,6 +52,7 @@ import { GeoService } from "./services/geo.service";
 // import { UploadFileService } from "./services/uploadfile.service";
 import { AuthorizationService } from './services/authorization.service'
 import { ReservacionesService } from './services/reservaciones.service'
+import { AuthService } from './services/auth.service'
 
 
 
@@ -60,6 +61,7 @@ import { ReservacionesService } from './services/reservaciones.service'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 
@@ -76,7 +78,8 @@ const appRoutes : Routes = [
   {path: 'reservaciones', component: ReservacionesComponent},
   {path: 'edit-reservacion/:id', component: EditReservacionComponent},
   {path:'delete-reservacion/:id', component: DeleteReservacionComponent},
-  {path:'delete-lugar/:id', component: DeleteLugarComponent}
+  {path:'delete-lugar/:id', component: DeleteLugarComponent},
+  {path: 'login', component: LoginPageComponent}
 
 
 
@@ -112,7 +115,9 @@ export const environment = {
     ReservacionesComponent,
     EditReservacionComponent,
     DeleteReservacionComponent,
-    DeleteLugarComponent
+    DeleteLugarComponent,
+    LoginPageComponent
+    // AppRoutingModule
   ],
   imports: [  //llamamos los modulos que vamos a ocupar para nuestra aplicacion
     BrowserModule,
@@ -150,7 +155,7 @@ export const environment = {
      ShareButtonsModule.forRoot()
 
   ],
-  providers: [LugaresService, GeoService, AuthorizationService, ReservacionesService], //aqui ponemos los servicios que vamos a necesitar para nuestra app
+  providers: [LugaresService, GeoService, AuthorizationService, ReservacionesService, AuthService], //aqui ponemos los servicios que vamos a necesitar para nuestra app
   bootstrap: [AppComponent] //aqui solo colocamos con cual componente vamos a iniciar
 })
 export class AppModule { }

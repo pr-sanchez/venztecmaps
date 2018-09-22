@@ -1,0 +1,71 @@
+<div *ngIf="authenticated">
+<div id="alerta" *ngIf="boMostrarMensaje" class=" myAlert-top alert alert-success alert-dismissible" role="alert">
+  <button type="button" name="button" class="close" data-dismiss="alert" aria-label="Close" (click)="cerrarMensaje()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>El registro ha sido guardado con éxito!</strong>
+  <br />{{mensajeSuccess}}
+</div>
+
+
+
+<div class="well">
+  <a routerLink="/lugares">Lugares</a> / Crear Lugar
+</div>
+
+<div class="container text-responsive">
+  <h3>Datos del Negocio</h3>
+  <label>Nombre</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.nombre"/>
+  <label>Distancia</label>
+  <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.distancia"/>
+  <label>Cercania</label>
+  <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.cercania"/>
+  <label>Tipo de Establecimiento</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.establecimiento"/>
+  <label>Estrellas</label>
+  <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.estrella"/>
+  <label>Descripción</label>
+  <textarea name="text" rows="8" cols="80" class="form-control" [(ngModel)]="lugar.descripcion"></textarea>
+  <label>Plan</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.plan"/>
+  <label>Facebook</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.facebook"/>
+  <label>Twitter</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.twitter"/>
+  <label>Página Web</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.web"/>
+  <label>Foto del Negocio</label><br />
+  <mat-input-container class="third-width">
+    <textarea matInput placeholder="Ingresar URL de la foto del negocio" [(ngModel)]="lugar.foto" name="foto"></textarea>
+  </mat-input-container><br>
+  <img class="img-responsive" src="{{lugar.foto}}" alt="{{lugar.nombre}}">
+  <!-- Oculto si no se quiere agregar google maps api billing desde la ultima act que hubo, no tengo tarjeta de credito, <h3>Datos de Dirección(Rellenar de ultimo)</h3>
+  <div class="well">
+    <form>
+        <h3>Buscar dirección en Google Maps</h3>
+        <input [formControl]="searchField" type="text" class="form-control" placeholder="NOMBRE DEL NEGOCIO + CIUDAD + ESTADO + PAIS">
+    </form>
+    <ul class="list-group">
+      <li (click)="seleccionarDireccion(result)" class="list-group-item" *ngFor="let result of results$ | async">{{result.formatted_address}}</li>
+    </ul>
+    </div> -->
+  <label>Calle y Número</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.calle" />
+  <label>Ciudad</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.ciudad"/>
+  <label>País</label>
+  <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.pais"/>
+
+  <!-- <label>Latitud</label>
+  <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.lat"/>
+  <label>Longuitud</label>
+  <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.lng"/> -->
+  <hr />
+  <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
+  <a class="btn btn-default" routerLink="/lugares">Cancelar</a>
+</div>
+
+
+<!-- <form-upload></form-upload> -->
+</div>

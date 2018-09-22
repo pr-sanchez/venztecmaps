@@ -1,0 +1,22 @@
+<div *ngIf="authenticated" class="container">
+    <div class="row">
+      <br>
+      <mat-toolbar color="warn"> Delete confirmation </mat-toolbar>
+      <div *ngIf="!lugarName" class="spinner">
+          <mat-spinner></mat-spinner>
+      </div>
+
+      <div class="delete-confirm" *ngIf="lugarName">
+          <mat-toolbar color="primary">You are about to delete the place: "{{lugarName}}".</mat-toolbar>
+          <mat-toolbar>
+              <mat-toolbar-row>
+                  <span>Place description: {{lugarDescripcion}}</span>
+              </mat-toolbar-row>
+              <mat-toolbar-row>
+                  <button [routerLink]="['/lugares/']" mat-button color="accent"> Go Back </button>
+                  <button (click)="removeLugar()" mat-raised-button color="warn">  Delete Permanently </button>
+                </mat-toolbar-row>
+          </mat-toolbar>
+      </div>
+    </div>
+  </div>

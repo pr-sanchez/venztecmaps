@@ -1,0 +1,63 @@
+<div *ngIf="authenticated" class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6">
+      <h3>Reservaciones por atender:</h3>
+      <ng-container *ngFor="let reservacion of sortReservaciones('date')"  (click)="doSomething(reservacion.id)">
+          <mat-card class="example-card padding" *ngIf="reservacion.isChecked == false" >
+            <mat-card-title>
+              <mat-icon class="Button pull-right" [routerLink]="['/edit-reservacion/'+reservacion.$key]">mode_edit</mat-icon>
+              <mat-icon class="Button" [routerLink]="['/delete-reservacion/'+reservacion.$key]">delete</mat-icon>
+            </mat-card-title>
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+            </mat-card-header>
+            <mat-card-content>
+              <h4>Id: {{reservacion.$key}}</h4>
+              <h4>Date: {{reservacion.date | date:'short' }} </h4>
+              <h4>Name: {{reservacion.name}}</h4>
+              <h4>Email: {{reservacion.email}}</h4>
+              <h4>Phone: {{reservacion.phone}} </h4>
+              <h4>People: {{reservacion.people}} </h4>
+              <h4>Country: {{reservacion.country}} </h4>
+              <h4>Travel Date: {{reservacion.date1 | date:'longDate'}} </h4>
+              <h4>Travel end date: {{reservacion.date2 | date:'longDate'}} </h4>
+              <h4>Checked: <span class="glyphicon glyphicon-remove" style="color:red"></span></h4>
+              <h4>Message: {{reservacion.message}}</h4>
+            </mat-card-content>
+            <mat-card-actions>
+            </mat-card-actions>
+          </mat-card>
+      </ng-container>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <h3>Reservaciones Atendidas:</h3>
+        <ng-container *ngFor="let reservacion of sortReservaciones('date')">
+            <mat-card class="example-card padding" *ngIf="reservacion.isChecked == true">
+              <mat-card-title>
+                  <mat-icon class="Button pull-right" [routerLink]="['/edit-reservacion/'+reservacion.$key]">mode_edit</mat-icon>
+                  <mat-icon class="Button" [routerLink]="['/delete-reservacion/'+reservacion.$key]">delete</mat-icon>
+              </mat-card-title>
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+              </mat-card-header>
+              <mat-card-content>
+                <h4>Id: {{reservacion.$key}}</h4>
+                <h4>Date: {{reservacion.date | date:'short' }} </h4>
+                <h4>Name: {{reservacion.name}}</h4>
+                <h4>Email: {{reservacion.email}}</h4>
+                <h4>Phone: {{reservacion.phone}} </h4>
+                <h4>People: {{reservacion.people}} </h4>
+                <h4>Country: {{reservacion.country}} </h4>
+                <h4>Travel Date: {{reservacion.date1 | date:'longDate'}} </h4>
+                <h4>Travel end date: {{reservacion.date2 | date:'longDate'}} </h4>
+                <h4>Checked: <span class="glyphicon glyphicon-ok" style="color:green"></span></h4>
+                <h4>Message: {{reservacion.message}}</h4>
+              </mat-card-content>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+        </ng-container>
+      </div>
+  </div>
+</div>
+

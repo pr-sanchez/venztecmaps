@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="16" height="16" viewBox="0 0 16 16" id="svg3771" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="87,pin,locate,marker,location,navigation.svg">
+  <defs id="defs3773">
+    <linearGradient inkscape:collect="always" id="linearGradient5680">
+      <stop style="stop-color:#fc6a28;stop-opacity:1;" offset="0" id="stop5682"/>
+      <stop style="stop-color:#f94045;stop-opacity:1" offset="1" id="stop5684"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#linearGradient5680" id="linearGradient5889" x1="-688.5" y1="-97.511719" x2="-677.68738" y2="-97.511719" gradientUnits="userSpaceOnUse" gradientTransform="translate(691.49999,1141.8739)"/>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="15.839192" inkscape:cx="-1.0754251" inkscape:cy="9.3100126" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="true" units="px" inkscape:snap-bbox="true" inkscape:bbox-paths="true" inkscape:bbox-nodes="true" inkscape:snap-bbox-edge-midpoints="true" inkscape:snap-bbox-midpoints="true" inkscape:window-width="1366" inkscape:window-height="705" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1">
+    <inkscape:grid type="xygrid" id="grid3779"/>
+  </sodipodi:namedview>
+  
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(0,-1036.3622)">
+    <path style="fill:url(#linearGradient5889);fill-opacity:1;stroke:none" d="m 7.99995,1037.3622 c -2.76143,0 -5,2.3566 -5,5.2637 0,2.2121 4.64453,8.5898 4.64453,8.5898 0.0928,0.1165 0.2292,0.1465 0.35547,0.1465 0.13066,0 0.2461,-0.039 0.35352,-0.1465 0,0 4.64658,-6.436 4.64658,-8.5898 0,-2.9071 -2.23858,-5.2637 -5,-5.2637 z m 0,2.9239 c 0.92045,0 1.66599,0.7868 1.66602,1.7558 2e-5,0.969 -0.74553,1.7539 -1.66602,1.7539 -0.92049,0 -1.66604,-0.7849 -1.66602,-1.7539 3e-5,-0.969 0.74557,-1.7558 1.66602,-1.7558 z" id="path5879" inkscape:connector-curvature="0" sodipodi:nodetypes="ssccccsssscss"/>
+  </g>
+
+	
+	<metadata>
+		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+			<rdf:Description about="https://iconscout.com/legal#licenses" dc:title="Pin, Locate, Marker, Location, Navigation" dc:description="Pin, Locate, Marker, Location, Navigation" dc:publisher="Iconscout" dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
+				<dc:creator>
+					<rdf:Bag>
+						<rdf:li>Chamestudio</rdf:li>
+					</rdf:Bag>
+				</dc:creator>
+			</rdf:Description>
+		</rdf:RDF>
+    </metadata></svg>

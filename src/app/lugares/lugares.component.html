@@ -1,0 +1,184 @@
+<div *ngIf="boMostrarMensaje" class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" name="button" class="close" data-dismiss="alert" aria-label="Close" (click)="cerrarMensaje()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Ocurrió un problema</strong>
+  <br />{{mensajeError}}
+</div>
+
+<!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="17" (mapClick)="onChoseLocation($event)" [scrollwheel]="false" [styles]="mapStyles">
+  <agm-marker *ngFor="let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng" >
+    <agm-info-window>Negocio: {{lugar.nombre}}</agm-info-window>
+  </agm-marker>
+</agm-map> -->
+
+
+
+
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="16"  [scrollwheel]="true" [styles]="customStyle" (mapClick)="onChoseLocation($event)"> <!--para moverme con el click evento (mapClick)="onChoseLocation($event)"-->
+  <!-- <agm-marker *ngFor="let marker of markers"
+    [latitude]="marker.location[0]"
+    [longitude]="marker.location[1]"
+    [iconUrl]="'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-64.png'"
+  >
+  <agm-info-window>
+    <h3><strong>Detalles de Localización</strong></h3>
+    <p>Estas a {{marker.distance}} kilometros de este punto.</p>
+  </agm-info-window>
+  </agm-marker> -->
+
+
+  <agm-marker *ngIf="locationChosen" [latitude]="lat" [longitude]="lng" [iconUrl]="'https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-2/512/map_marker_base-64.png'" >
+    <agm-info-window>
+      <h1>Estoy allá</h1>
+    </agm-info-window>
+  </agm-marker>
+  <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-2/512/map_marker_base-64.png'" >
+    <agm-info-window [isOpen]="true">
+      <h1>Estas aquí</h1>
+    </agm-info-window>
+  </agm-marker>
+  <agm-marker *ngFor="let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng"   [iconUrl]="'https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-2/512/map_marker_base-64.png'"
+><!--[iconUrl]="'/assets/marker-default.svg'"-->
+    <agm-snazzy-info-window
+      [latitude]="lugar.lat"
+      [longitude]="lugar.lng"
+      [closeWhenOthersOpen]="true"
+      >
+      <!-- [wrapperClass]="'cz-info-window-container'"
+      [maxWidth]="275"
+      [backgroundColor]="'#eee'"
+
+      [showCloseButton]="false"
+      [borderRadius]="'4px'"
+      [backgroundColor]="'#FFF'"
+      [padding]="'0px'"
+      [isOpen]="true" -->
+      <!--[closeWhenOthersOpen]="true" -->
+      <div class="si-float-wrapper">
+        <div class="si-wrapper-top">
+          <div class="si-shadow-wrapper-top">
+            <div class="si-shadow-frame"></div>
+            <div class="si-shadow-pointer-top">
+              <div class="si-shadow-inner-pointer-top"></div>
+            </div>
+          </div>
+          <div class="si-content-wrapper">
+            <div class="si-content">
+              <button class="si-close-button"></button>
+              <ng-template>
+                <div class="caja-contenido">
+                  <img *ngIf="lugar.foto" class="img-responsive" mat-card-image src="{{lugar.foto}}" alt="{{lugar.nombre}}">
+                  <!-- <img mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Everett_-_Commerce_Building_02.jpg/1200px-Everett_-_Commerce_Building_02.jpg" alt="Photo of a Shiba Inu"> -->
+                  <h4><i><b>Negocio: </b></i>{{lugar.nombre}}</h4>
+                  <h4><i><b>Tipo de Negocio: </b></i>{{lugar.establecimiento}}</h4>
+                  <h4><i><b>Descripción: </b></i><p [innerHTML]="lugar.descripcion | linkifystr" [dynamicContent]="currentView"></p></h4>
+                  <h4><i><b>Redes:</b></i></h4>
+                  <a class="btn btn-social-icon btn-adn btn-adn-facebook" href="{{lugar.facebook}}" target="_blank" ><span class="fa fa-facebook"></span></a>
+                  <a class="btn btn-social-icon btn-adn btn-adn-twitter" href="{{lugar.twitter}}" target="_blank" ><span class="fa fa-twitter"></span></a>
+                  <a class="btn btn-social-icon btn-adn btn-adn-globe" href="{{lugar.web}}" target="_blank" ><span class="fa fa-globe"></span></a>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+            <div class="si-pointer-border-top"></div>
+            <div class="si-pointer-bg-top"></div>
+          </div>
+        </div>
+      </agm-snazzy-info-window>
+    </agm-marker>
+  </agm-map>
+
+
+
+<hr/>
+
+
+
+<div class="container">
+  <div class="row">
+    <div [@contenedorAnimable]="state" class="col-md-8">
+      <h2>Lugares cercanos</h2>
+
+      <button *ngIf="authenticated" routerLink="/crear/new" mat-raised-button color="primary">Crear nuevo negocio</button>
+      <br /><br />
+        <ng-container *ngFor="let lugar of lugares">
+          <!-- ngFor, camel case -->
+            <mat-card class="example-card padding" *ngIf="lugar.plan == 'Gratuito'" >
+              <span *ngIf="authenticated" routerLink="../crear/{{lugar.id}}" class="glyphicon glyphicon-pencil pull-right padding"></span>
+              <span *ngIf="authenticated" routerLink="../delete-lugar/{{lugar.id}}" class="glyphicon glyphicon-trash pull-right padding"></span>
+              <span routerLink="../detalle/{{lugar.id}}" class="glyphicon glyphicon-eye-open pull-right padding"></span>
+              <mat-card-title>{{lugar.nombre}}</mat-card-title>
+              <mat-card-subtitle>Tipo de establecimiento {{lugar.establecimiento}}</mat-card-subtitle>
+              <mat-card-content>
+              <p [innerHTML]="lugar.descripcion | linkifystr" [dynamicContent]="currentView"></p>
+              <small>Creado: {{lugar.id | date | uppercase}}</small>
+              </mat-card-content>
+            </mat-card> <!--pipes para fecha fullDate, medium, short, shortTime, mediumTime-->
+
+       </ng-container><!--directiva queryParams va a recibir este objeto con todos los parametros que queramos enviar-->
+    </div>
+    <div class="col-md-4" [@contenedorAnimable]="state">
+      <h2>Destacados</h2>
+      <ng-container *ngFor="let lugar of lugares; let i = index">
+        <!-- ngFor, camel case -->
+          <mat-card id="target" class="example-card padding" *ngIf="lugar.plan == 'Pagado'">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{lugar.nombre}}</mat-card-title>
+              <mat-card-subtitle>Tipo de establecimiento: {{lugar.establecimiento}}</mat-card-subtitle>
+              <span routerLink="/detalle/{{lugar.id}}" class="glyphicon glyphicon-eye-open pull-right padding"></span>
+              <span *ngIf="authenticated" routerLink="/crear/{{lugar.id}}" class="glyphicon glyphicon-pencil pull-right padding"></span>
+            </mat-card-header>
+            <img *ngIf="lugar.foto" mat-card-image src="{{lugar.foto}}" alt="{{lugar.nombre}}">
+              <div *ngIf="lugar.estrella == '1'" class="">
+                <span  class="glyphicon glyphicon-star"></span>
+              </div>
+                <div *ngIf="lugar.estrella == '2'" class="">
+                  <span  class="glyphicon glyphicon-star"></span>
+                  <span  class="glyphicon glyphicon-star"></span>
+                </div>
+                  <div *ngIf="lugar.estrella == '3'" class="">
+                    <span  class="glyphicon glyphicon-star"></span>
+                    <span  class="glyphicon glyphicon-star"></span>
+                    <span  class="glyphicon glyphicon-star"></span>
+                  </div>
+                    <div *ngIf="lugar.estrella == '4'" class="">
+                      <span  class="glyphicon glyphicon-star"></span>
+                      <span  class="glyphicon glyphicon-star"></span>
+                      <span  class="glyphicon glyphicon-star"></span>
+                      <span  class="glyphicon glyphicon-star"></span>
+                    </div>
+                      <div *ngIf="lugar.estrella == '5'" class="">
+                          <span  class="glyphicon glyphicon-star"></span>
+                          <span  class="glyphicon glyphicon-star"></span>
+                          <span  class="glyphicon glyphicon-star"></span>
+                          <span  class="glyphicon glyphicon-star"></span>
+                          <span  class="glyphicon glyphicon-star"></span>
+                      </div>
+            <mat-card-content>
+              <h4>Descripción:</h4> <p [innerHTML]="lugar.descripcion | linkifystr" [dynamicContent]="currentView"></p>
+            </mat-card-content>
+            <mat-card-actions>
+
+              <!-- <a href="#" (click)="onAgarrameEstas($event)">{{lugar.lat + ' ' + lugar.lng}}</a>
+              <a (click)="onAgarrameEstas($event)">{{lugar.lng}}</a> -->
+              <!-- <button mat-button>ME GUSTA</button> -->
+              <!-- <button mat-button (click)="likeMe(i)">
+                <mat-icon class="example-icon" [class.red-color]="lugar.liked == '1'">favorite</mat-icon>
+              </button> -->
+              <share-buttons class="text-center" [theme]="'material-dark'"  [include]="['facebook','twitter','linkedin','whatsapp']" [show]="4"  [showText]="false"
+              [showCount]="true" [url]="'http://venztecmaps.firebaseapp.com#target'"></share-buttons>
+                <p>
+                  A xxx personas les gusta esto.
+                </p>
+            </mat-card-actions>
+          </mat-card> <!--pipes para fecha fullDate, medium, short, shortTime, mediumTime-->
+     </ng-container>
+
+      <!-- <div id="cuadrado" [@contenedorAnimable]="state" (@contenedorAnimable.start)="animacionInicia($event)" (@contenedorAnimable.done)="animacionTermina($event)">  </div> -->
+      <!--directiva de atributo y se le coloca @ para decir que es de animacion-->
+      <!-- <button type="button" class="btn btn-primary" name="button" (click)="animar()">Animar</button> -->
+    </div>
+  </div>
+</div>
