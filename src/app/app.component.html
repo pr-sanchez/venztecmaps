@@ -1,20 +1,112 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<!--header-->
+<!-- <nav class="nav navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="fa fa-bars"></span>
+                  </button>
+        <a href="index.html" class="navbar-brand">VenztecMaps</a>
+      </div>
+      <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active"><a routerLink="/lugares">Inicio</a></li>
+          <li routerLinkActive="active"><a href="#feature">Feature</a></li>
+          <li routerLinkActive="active"><a href="#portfolio">Portfolio</a></li>
+          <li routerLinkActive="active"><a routerLink="/contacto">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+-->
+
+
+<!-- <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">VenztecMaps</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/lugares">Inicio <span class="sr-only">(current)</span></a></li>
+        <li routerLinkActive="active"><a routerLink="/contacto">contacto</a></li>
+
+      </ul>
+
+
+    </div>
+  </div>
+</nav> -->
+
+
+
+<mat-toolbar color="primary">
+  <span>VenztecMaps</span>
+  <span class="example-spacer"></span>
+  <span *ngIf="authenticated" class="pull-left hidden-xs">{{loggedUser}}</span>
+
+  <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>menu</mat-icon></button>
+</mat-toolbar>
+<mat-menu #appMenu="matMenu">
+  <div mat-card-avatar class="pull-right">
+    <!-- <img mat-card-image src="{{profilePhoto}}" alt="Foto de perfil del usuario {{loggedUseer}}"> -->
+  </div>
+  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item routerLink="/lugares">Places<mat-icon class="example-icon">home</mat-icon></button>
+  <button *ngIf="!authenticated" routerLinkActive="active" mat-menu-item (click)="googleLogin()" >Iniciar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
+  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item (click)="signOut()" >Cerrar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
+  <!-- <button *ngIf="!authenticated" routerLinkActive="active"mat-menu-item routerLink="/register">Registro<mat-icon class="example-icon">account_circle</mat-icon></button> -->
+  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item routerLink="/reservaciones">Reservations<mat-icon class="example-icon">help</mat-icon></button>
+  <button routerLinkActive="active" mat-menu-item routerLink="/faqs">FAQ's<mat-icon class="example-icon">help</mat-icon></button>
+  <button routerLinkActive="active" mat-menu-item routerLink="/contacto">Contact <mat-icon class="example-icon">call</mat-icon></button>
+</mat-menu>
+
+
+
+<router-outlet></router-outlet>
+
+
+
+
+<!-- <footer class="" id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7 footer-copyright">
+        © Bethany Theme - All rights reserved
+        <div class="credits">
+
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+
+          <h1>Information Request</h1>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <input type="text" placeholder="Name" formControlName="name">
+            <input type="text" placeholder="Email" formControlName="email">
+            <textarea placeholder="Message" formControlName="message"></textarea>
+            <button type="submit" [disabled]="form.invalid">Submit</button></form>
+        </div>
+      </div>
+      <div class="col-sm-5 footer-social">
+        <div class="pull-right hidden-xs hidden-sm">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-dribbble"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-google-plus"></i></a>
+          <a href="#"><i class="fa fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> -->
