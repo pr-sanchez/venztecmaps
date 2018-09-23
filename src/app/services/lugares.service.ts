@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Http, Headers} from "@angular/http";
-import { AuthorizationService } from './authorization.service';
+// import { AuthorizationService } from './authorization.service';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash'
@@ -16,11 +16,11 @@ export class LugaresService{
     detalleslugar: FirebaseObjectObservable<any>;
 
 
-    constructor(private afDB:AngularFireDatabase, private http: Http, auth: AuthorizationService){
-        auth.user.map(user => {
-            return this.userRoles = _.keys(_.get(user, 'roles'))
-          })
-          .subscribe()
+    constructor(private afDB:AngularFireDatabase, private http: Http){//, auth: AuthorizationService
+        // auth.user.map(user => {
+        //     return this.userRoles = _.keys(_.get(user, 'roles'))
+        //   })
+        //   .subscribe()
     }
 
     public getLugares(){

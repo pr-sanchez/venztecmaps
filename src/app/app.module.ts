@@ -5,7 +5,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ResaltarDirective } from "./directives/resaltar.directive";
 import { ContarClicksDirective } from "./directives/contador-clicks.directive";
 import { Routes, RouterModule } from "@angular/router";
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 import { CrearComponent } from "./crear/crear.component";
 import { LinkifystrPipe } from "./pipes/linkifystr.pipe";
 import { DynamicContent }  from "./directives/dynamic-content.directive";
@@ -29,7 +29,6 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
 //Forms
 import { FormsModule, ReactiveFormsModule} from "@angular/forms"
 
-
 //Components
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReservacionesComponent } from './reservaciones/reservaciones.component';
@@ -44,7 +43,6 @@ import { DeleteReservacionComponent } from './delete-reservacion/delete-reservac
 import { DeleteLugarComponent } from './delete-lugar/delete-lugar.component';
 
 //Modules
-// import { AppRoutingModule } from './app-routing.module'
 
 //Services
 import {LugaresService} from "./services/lugares.service";
@@ -54,19 +52,11 @@ import { AuthorizationService } from './services/authorization.service'
 import { ReservacionesService } from './services/reservaciones.service'
 import { AuthService } from './services/auth.service'
 
-
-
-
 //firebase configuration
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { LoginPageComponent } from './login-page/login-page.component';
-
-
-
-
-
 
 
 const appRoutes : Routes = [
@@ -80,11 +70,6 @@ const appRoutes : Routes = [
   {path:'delete-reservacion/:id', component: DeleteReservacionComponent},
   {path:'delete-lugar/:id', component: DeleteLugarComponent},
   {path: 'login', component: LoginPageComponent}
-
-
-
-
-
 ];
 export const environment = {
   production: false,
@@ -92,6 +77,7 @@ export const environment = {
     apiKey: "AIzaSyBQ1F6d0gP_SCMuHBQVt3mGTReuL3baRMQ",
     authDomain: "venztecmaps-1516388139367.firebaseapp.com",
     databaseURL: "https://venztecmaps-1516388139367.firebaseio.com",
+    projectId: "venztecmaps-1516388139367",
     storageBucket: "venztecmaps-1516388139367.appspot.com",
     messagingSenderId: "767470847086"
   }
@@ -117,7 +103,6 @@ export const environment = {
     DeleteReservacionComponent,
     DeleteLugarComponent,
     LoginPageComponent
-    // AppRoutingModule
   ],
   imports: [  //llamamos los modulos que vamos a ocupar para nuestra aplicacion
     BrowserModule,
@@ -153,7 +138,6 @@ export const environment = {
      HttpClientModule,       // for share counts
      HttpClientJsonpModule,  // for linkedin and tumblr share counts
      ShareButtonsModule.forRoot()
-
   ],
   providers: [LugaresService, GeoService, AuthorizationService, ReservacionesService, AuthService], //aqui ponemos los servicios que vamos a necesitar para nuestra app
   bootstrap: [AppComponent] //aqui solo colocamos con cual componente vamos a iniciar

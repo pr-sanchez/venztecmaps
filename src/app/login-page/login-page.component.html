@@ -1,0 +1,11 @@
+<h1>Login to your account using Google</h1>
+<button (click)="login()">Login</button>
+<div *ngIf="user">
+  <h3>Hello {{user.displayName}}</h3>
+  <img [src]="user.photoURL">
+  <button (click)="authService.logout()">Log out</button>
+</div>
+<div *ngIf="user">
+  <h3>Subscriber: {{user.roles?.subscriber ? true:false}}</h3>
+  <h3>Admin: {{user.roles?.admin ? true:false}}</h3>
+</div>
