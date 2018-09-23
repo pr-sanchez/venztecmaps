@@ -11,7 +11,7 @@
                   <img *ngIf="lugar.foto" class="img-responsive" mat-card-image src="{{lugar.foto}}" alt="{{lugar.nombre}}">
                   <h4><i><b>Negocio: </b></i>{{lugar.nombre}}</h4>
                   <h4><i><b>Tipo de Negocio: </b></i>{{lugar.establecimiento}}</h4>
-                  <h4><i><b>Descripción: </b></i><p [innerHTML]="lugar.descripcion | linkifystr" [dynamicContent]="currentView"></p></h4>
+                  <h4><i><b>Descripción: </b></i><p [innerHTML]="lugar.descripcion | linkifystr" ></p></h4> <!--[dynamicContent]="currentView" dentro dentro de la etiqueta p-->
                   <h4><i><b>Redes:</b></i></h4>
                   <a class="btn btn-social-icon btn-adn btn-adn-facebook" href="{{lugar.facebook}}" target="_blank" ><span class="fa fa-facebook"></span></a>
                   <a class="btn btn-social-icon btn-adn btn-adn-twitter" href="{{lugar.twitter}}" target="_blank" ><span class="fa fa-twitter"></span></a>
