@@ -99,14 +99,18 @@
   <div class="row">
     <div [@contenedorAnimable]="state" class="col-md-8">
       <h2>Lugares cercanos</h2>
-
-      <button *ngIf="authenticated" routerLink="/crear/new" mat-raised-button color="primary">Crear nuevo negocio</button>
+      <div>
+          <!-- <h3>Admin: {{user.roles?.admin ? true:false}}</h3> -->
+          <div >
+              <button routerLink="/crear/new" mat-raised-button color="primary">Crear nuevo negocio</button>
+          </div>
+      </div>
       <br /><br />
         <ng-container *ngFor="let lugar of lugares">
           <!-- ngFor, camel case -->
             <mat-card class="example-card padding" *ngIf="lugar.plan == 'Gratuito'" >
-              <span *ngIf="authenticated" routerLink="../crear/{{lugar.id}}" class="glyphicon glyphicon-pencil pull-right padding"></span>
-              <span *ngIf="authenticated" routerLink="../delete-lugar/{{lugar.id}}" class="glyphicon glyphicon-trash pull-right padding"></span>
+              <span routerLink="../crear/{{lugar.id}}" class="glyphicon glyphicon-pencil pull-right padding"></span>
+              <span routerLink="../delete-lugar/{{lugar.id}}" class="glyphicon glyphicon-trash pull-right padding"></span>
               <span routerLink="../detalle/{{lugar.id}}" class="glyphicon glyphicon-eye-open pull-right padding"></span>
               <mat-card-title>{{lugar.nombre}}</mat-card-title>
               <mat-card-subtitle>Tipo de establecimiento {{lugar.establecimiento}}</mat-card-subtitle>
@@ -128,7 +132,7 @@
               <mat-card-title>{{lugar.nombre}}</mat-card-title>
               <mat-card-subtitle>Tipo de establecimiento: {{lugar.establecimiento}}</mat-card-subtitle>
               <span routerLink="/detalle/{{lugar.id}}" class="glyphicon glyphicon-eye-open pull-right padding"></span>
-              <span *ngIf="authenticated" routerLink="/crear/{{lugar.id}}" class="glyphicon glyphicon-pencil pull-right padding"></span>
+              <span routerLink="/crear/{{lugar.id}}" class="glyphicon glyphicon-pencil pull-right padding"></span>
             </mat-card-header>
             <img *ngIf="lugar.foto" mat-card-image src="{{lugar.foto}}" alt="{{lugar.nombre}}">
               <div *ngIf="lugar.estrella == '1'" class="">

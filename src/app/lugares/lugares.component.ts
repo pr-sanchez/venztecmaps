@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LugaresService } from '../services/lugares.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { GeoService } from '../services/geo.service';
-import { AuthorizationService } from '../services/authorization.service';
 import { ShareButtons } from '@ngx-share/core';
 
 

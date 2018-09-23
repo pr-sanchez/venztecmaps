@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { User } from '../interfaces/user';
 import { switchMap } from 'rxjs/operators';
+import { CodegenComponentFactoryResolver } from '../../../node_modules/@angular/core/src/linker/component_factory_resolver';
 
 @Injectable()
 export class AuthService {
@@ -28,17 +29,35 @@ export class AuthService {
 
    updateUser(user){
      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-     const data: User = {
-       uid: user.uid,
-       email: user.email,
-       displayName: user.displayName,
-       photoURL: user.photoURL,
-       roles: {
-         subscriber: true,
-         admin: false
-       }
-     }
-     return userRef.set(data, {merge: true});
+     const data: User = { uid: user.uid, email: user.email, displayName: user.displayName, photoURL: user.photoURL, roles: { subscriber: true, admin: false } }
+
+     if(data.email == "pedrosranchezchacon@gmail.com") {
+      const data: User = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        roles: {
+          subscriber: true,
+          admin: true
+        }
+      }
+      return userRef.set(data, {merge: true});
+    }
+    else{
+      const data: User = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        roles: {
+          subscriber: true,
+          admin: false
+        }
+      }
+      return userRef.set(data, {merge: true});
+    }
+
    }
 
    logout(){

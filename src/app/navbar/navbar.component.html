@@ -1,3 +1,60 @@
-<p>
-  navbar works!
-</p>
+<mat-toolbar color="primary">
+  <span class="cursor-pointer" routerLinkActive="active" routerLink="/lugares">VenztecMaps</span>
+  <span class="example-spacer"></span>
+  <div *ngIf="user">
+    <span>Hello {{user.displayName}}</span>
+    <div class="photoURL">
+      <img [src]="user.photoURL">
+    </div>
+  </div>
+  <button mat-button [matMenuTriggerFor]="appMenu" class="pull-right"><mat-icon>menu</mat-icon></button>
+</mat-toolbar>
+<mat-menu #appMenu="matMenu">
+
+  <button routerLinkActive="active" mat-menu-item routerLink="/lugares">Places<mat-icon class="example-icon">home</mat-icon></button>
+  <button routerLinkActive="active" mat-menu-item routerLink="/login" >Iniciar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
+  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item (click)="signOut()" >Cerrar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
+  <!-- <button *ngIf="!authenticated" routerLinkActive="active"mat-menu-item routerLink="/register">Registro<mat-icon class="example-icon">account_circle</mat-icon></button> -->
+  <button *ngIf="user" routerLinkActive="active" mat-menu-item routerLink="/reservaciones">Reservations<mat-icon class="example-icon">help</mat-icon></button>
+  <button routerLinkActive="active" mat-menu-item routerLink="/faqs">FAQ's<mat-icon class="example-icon">help</mat-icon></button>
+  <button routerLinkActive="active" mat-menu-item routerLink="/contacto">Contact <mat-icon class="example-icon">call</mat-icon></button>
+</mat-menu>
+
+
+<!-- <div *ngIf="user">
+  <h3>Hello {{user.displayName}}</h3>
+  <img [src]="user.photoURL">
+  <button (click)="authService.logout()">Log out</button>
+</div>
+<div *ngIf="user">
+  <h3>Subscriber: {{user.roles?.subscriber ? true:false}}</h3>
+  <h3>Admin: {{user.roles?.admin ? true:false}}</h3>
+</div>
+ -->
+
+
+
+
+
+
+
+<!--
+<mat-toolbar color="primary">
+  <span routerLinkActive="active" routerLink="/lugares">VenztecMaps</span>
+  <span class="example-spacer"></span>
+  <span *ngIf="authenticated" class="pull-left hidden-xs">{{loggedUser}}</span>
+
+  <button mat-button [matMenuTriggerFor]="appMenu" class="pull-right"><mat-icon>menu</mat-icon></button>
+</mat-toolbar>
+<mat-menu #appMenu="matMenu">
+
+  <div mat-card-avatar class="pull-right">
+    <img mat-card-image src="{{profilePhoto}}" alt="Foto de perfil del usuario {{loggedUseer}}">
+  </div>
+  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item routerLink="/lugares">Places<mat-icon class="example-icon">home</mat-icon></button>
+  <button *ngIf="!authenticated" routerLinkActive="active" mat-menu-item (click)="googleLogin()" >Iniciar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
+  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item (click)="signOut()" >Cerrar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
+  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item routerLink="/reservaciones">Reservations<mat-icon class="example-icon">help</mat-icon></button>
+  <button routerLinkActive="active" mat-menu-item routerLink="/faqs">FAQ's<mat-icon class="example-icon">help</mat-icon></button>
+  <button routerLinkActive="active" mat-menu-item routerLink="/contacto">Contact <mat-icon class="example-icon">call</mat-icon></button>
+</mat-menu> -->

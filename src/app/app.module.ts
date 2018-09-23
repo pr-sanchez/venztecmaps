@@ -57,6 +57,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { AdminGuard } from './guards/admin.guard';
+import { SubscriberGuard } from './guards/subscriber.guard';
 
 
 const appRoutes : Routes = [
@@ -64,11 +66,11 @@ const appRoutes : Routes = [
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'crear/:id', component: CrearComponent},
-  {path: 'reservaciones', component: ReservacionesComponent},
+  {path: 'crear/:id', component: CrearComponent, canActivate: [AdminGuard]},
+  {path: 'reservaciones', component: ReservacionesComponent, canActivate: [AdminGuard]},
   {path: 'edit-reservacion/:id', component: EditReservacionComponent},
-  {path:'delete-reservacion/:id', component: DeleteReservacionComponent},
-  {path:'delete-lugar/:id', component: DeleteLugarComponent},
+  {path:'delete-reservacion/:id', component: DeleteReservacionComponent, canActivate: [AdminGuard]},
+  {path:'delete-lugar/:id', component: DeleteLugarComponent, canActivate: [AdminGuard]},
   {path: 'login', component: LoginPageComponent}
 ];
 export const environment = {
@@ -139,7 +141,7 @@ export const environment = {
      HttpClientJsonpModule,  // for linkedin and tumblr share counts
      ShareButtonsModule.forRoot()
   ],
-  providers: [LugaresService, GeoService, AuthorizationService, ReservacionesService, AuthService], //aqui ponemos los servicios que vamos a necesitar para nuestra app
+  providers: [LugaresService, GeoService, AuthorizationService, ReservacionesService, AuthService, AdminGuard, SubscriberGuard], //aqui ponemos los servicios que vamos a necesitar para nuestra app
   bootstrap: [AppComponent] //aqui solo colocamos con cual componente vamos a iniciar
 })
 export class AppModule { }

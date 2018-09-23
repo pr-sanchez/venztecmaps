@@ -54,28 +54,9 @@
 
 
 
-<mat-toolbar color="primary">
-  <span>VenztecMaps</span>
-  <span class="example-spacer"></span>
-  <span *ngIf="authenticated" class="pull-left hidden-xs">{{loggedUser}}</span>
-
-  <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>menu</mat-icon></button>
-</mat-toolbar>
-<mat-menu #appMenu="matMenu">
-  <div mat-card-avatar class="pull-right">
-    <!-- <img mat-card-image src="{{profilePhoto}}" alt="Foto de perfil del usuario {{loggedUseer}}"> -->
-  </div>
-  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item routerLink="/lugares">Places<mat-icon class="example-icon">home</mat-icon></button>
-  <button *ngIf="!authenticated" routerLinkActive="active" mat-menu-item (click)="googleLogin()" >Iniciar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
-  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item (click)="signOut()" >Cerrar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
-  <!-- <button *ngIf="!authenticated" routerLinkActive="active"mat-menu-item routerLink="/register">Registro<mat-icon class="example-icon">account_circle</mat-icon></button> -->
-  <button *ngIf="authenticated" routerLinkActive="active" mat-menu-item routerLink="/reservaciones">Reservations<mat-icon class="example-icon">help</mat-icon></button>
-  <button routerLinkActive="active" mat-menu-item routerLink="/faqs">FAQ's<mat-icon class="example-icon">help</mat-icon></button>
-  <button routerLinkActive="active" mat-menu-item routerLink="/contacto">Contact <mat-icon class="example-icon">call</mat-icon></button>
-</mat-menu>
 
 
-
+<app-navbar></app-navbar>
 <router-outlet></router-outlet>
 
 

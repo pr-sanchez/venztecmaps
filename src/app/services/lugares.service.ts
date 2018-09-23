@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {Http, Headers} from "@angular/http";
-// import { AuthorizationService } from './authorization.service';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash'
@@ -11,7 +10,6 @@ import 'rxjs/add/operator/mergeMap';
 @Injectable()
 export class LugaresService{
     API_ENDPOINT = 'https://venztecmaps-1516388139367.firebaseio.com';
-    userRoles: Array<string>;
     lugares:any;
     detalleslugar: FirebaseObjectObservable<any>;
 
@@ -49,11 +47,7 @@ export class LugaresService{
     }
 
     public editarLugar(lugar){
-      if(this.canEdit){
         this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
-      } else{
-        console.log('acción prevenida!')
-      }
     }
 
 
@@ -73,24 +67,5 @@ export class LugaresService{
       return this.lugares.remove();
       //  this.lugares.remove(id);
       }
-
-    get canRead(): boolean{
-        const allowed = ['admin', 'reader']
-        return this.matchingRole(allowed)
-    }
-
-    get canEdit(): boolean{
-         const allowed = ['admin', 'reader']
-         return this.matchingRole(allowed)
-    }
-
-    get canDelete(): boolean{
-         const allowed = ['admin']
-        return this.matchingRole(allowed)
-    }
-
-    private matchingRole(allowedRoles): boolean{
-        return !_.isEmpty(_.intersection(allowedRoles, this.userRoles))
-    }
 
 }
