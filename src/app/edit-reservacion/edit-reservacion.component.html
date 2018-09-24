@@ -35,7 +35,11 @@
 
 <div class="container">
     <div class="edit-book-form">
-
+      <br>
+      <button class="pull-right" mat-raised-button  routerLink="/reservaciones"> Back </button>
+      <br>
+      <br>
+      <br>
           <form #values="ngForm" (submit)="submitEdit()">
             <mat-card class="" >
               <mat-card-content>
@@ -47,7 +51,6 @@
                     <div class="col-lg-2">
                     </div>
                     <div class="col-lg-4">
-                      <button mat-raised-button [routerLink]="['/reservaciones']"> Back </button>
                     </div>
                   </div>
                   <br>

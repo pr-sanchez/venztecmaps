@@ -14,7 +14,7 @@
               </mat-toolbar-row>
               <mat-toolbar-row>
                   <button [routerLink]="['/lugares/']" mat-button color="accent"> Go Back </button>
-                  <button (click)="removeLugar()" mat-raised-button color="warn">  Delete Permanently </button>
+                  <button *ngIf="lugaresService.canDelete" (click)="removeLugar()" mat-raised-button color="warn">  Delete Permanently </button>
                 </mat-toolbar-row>
           </mat-toolbar>
       </div>

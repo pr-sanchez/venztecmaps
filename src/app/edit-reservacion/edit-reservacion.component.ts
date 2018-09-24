@@ -64,7 +64,8 @@ export class EditReservacionComponent implements OnInit {
       message: this.message
     }
 
-    this.reservacionesService.updateReservacion(this.id, reservacion);
-    this.router.navigate(['/messages'])
+    this.reservacionesService.editReservacion(this.id, reservacion);
+    alert("Reservation edited succesfully!");
+    this.router.navigate(['/reservaciones'])
   }
 }

@@ -12,10 +12,10 @@
 <mat-menu #appMenu="matMenu">
 
   <button routerLinkActive="active" mat-menu-item routerLink="/lugares">Places<mat-icon class="example-icon">home</mat-icon></button>
-  <button routerLinkActive="active" mat-menu-item routerLink="/login" >Iniciar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
-  <button *ngIf="user" routerLinkActive="active" mat-menu-item (click)="signOut()" >Cerrar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
+  <button *ngIf="!user" routerLinkActive="active" mat-menu-item routerLink="/login" >Iniciar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
+  <button *ngIf="user" routerLinkActive="active" mat-menu-item (click)="logout()" >Cerrar Sesión<mat-icon class="example-icon">fingerprint</mat-icon></button>
   <!-- <button *ngIf="!authenticated" routerLinkActive="active"mat-menu-item routerLink="/register">Registro<mat-icon class="example-icon">account_circle</mat-icon></button> -->
-  <button *ngIf="user" routerLinkActive="active" mat-menu-item routerLink="/reservaciones">Reservations<mat-icon class="example-icon">help</mat-icon></button>
+  <button *ngIf="user"  routerLinkActive="active" mat-menu-item routerLink="/reservaciones">Reservations<mat-icon class="example-icon">help</mat-icon></button>
   <button routerLinkActive="active" mat-menu-item routerLink="/faqs">FAQ's<mat-icon class="example-icon">help</mat-icon></button>
   <button routerLinkActive="active" mat-menu-item routerLink="/contacto">Contact <mat-icon class="example-icon">call</mat-icon></button>
 </mat-menu>

@@ -71,11 +71,11 @@ export class CrearComponent {
                 this.lugar.lng = result.json().results[0].geometry.location.lng;
 
                 if(this.id != 'new'){
-                    this.lugaresService.editarLugar(this.lugar);
+                    this.lugaresService.editLugar(this.lugar);
                     alert('Negocio editado con éxito!');
                 }else{
                     this.lugar.id = Date.now();
-                    this.lugaresService.guardarLugar(this.lugar);
+                    this.lugaresService.createLugar(this.lugar);
                     this.boMostrarMensaje = true;
                     this.mensajeSuccess ='Negocio guardado con éxito!';
                 }

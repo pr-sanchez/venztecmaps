@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-contacto',
@@ -16,7 +17,7 @@ export class ContactoComponent {
   //   'no'
   // ];
 
-  constructor(private fb: FormBuilder, private af: AngularFireDatabase) {
+  constructor(private fb: FormBuilder, private af: AngularFireDatabase, private router: Router) {
     this.createForm();
   }
 
@@ -51,6 +52,8 @@ export class ContactoComponent {
     let formRequest = { name, email, phone, people, country, date1, date2, isChecked, message, date, html };
     this.af.list('/messages').push(formRequest);
     this.form.reset();
+    alert("Reservation sended!");
+    this.router.navigate(['/lugares']);
   }
 
 }

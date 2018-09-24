@@ -24,7 +24,8 @@ export class DeleteReservacionComponent implements OnInit {
 
   removeReservacion(){
     this.reservacionesService.deleteReservacion(this.id);
-    this.router.navigate(['']);
+    alert("Reservation deleted succesfully!");
+    this.router.navigate(['/reservaciones']);
   }
 
 }

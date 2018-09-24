@@ -17,10 +17,10 @@
   <h3>Datos del Negocio</h3>
   <label>Nombre</label>
   <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.nombre"/>
-  <label>Distancia</label>
+  <!-- <label>Distancia</label>
   <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.distancia"/>
   <label>Cercania</label>
-  <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.cercania"/>
+  <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.cercania"/> -->
   <label>Tipo de Establecimiento</label>
   <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.establecimiento"/>
   <label>Estrellas</label>
@@ -50,19 +50,24 @@
       <li (click)="seleccionarDireccion(result)" class="list-group-item" *ngFor="let result of results$ | async">{{result.formatted_address}}</li>
     </ul>
     </div> -->
-  <label>Calle y Número</label>
+  <label>Nombre del negocio, Calle y Número de calle (Ser lo mas especifico posible aqui)</label>
   <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.calle" />
   <label>Ciudad</label>
   <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.ciudad"/>
   <label>País</label>
   <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.pais"/>
-
+  <br>
+  <p>Tip: Todos los negocios son buscados y posicionados a través de google maps,<br>
+    si no se guarda el negocio pueden existir multiples razones, pero las mas probables son:<br>
+    1: Negocio mal especificado y el api de google no lo encuentra en su base de datos.<br>
+    2  Ha hecho click en crear muy rapido, el api se tarda en encontrar el negocio ingresado entre 1 segundo y 3 segundos.
+  </p>
   <!-- <label>Latitud</label>
   <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.lat"/>
   <label>Longuitud</label>
   <input type="number" name="" value="" class="form-control" [(ngModel)]="lugar.lng"/> -->
   <hr />
-  <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
+  <a *ngIf="lugaresService.canCreate" (click)="guardarLugar()" class="btn btn-primary">Crear</a>
   <a class="btn btn-default" routerLink="/lugares">Cancelar</a>
 </div>
 

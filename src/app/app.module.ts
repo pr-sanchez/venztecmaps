@@ -48,9 +48,10 @@ import { DeleteLugarComponent } from './delete-lugar/delete-lugar.component';
 import {LugaresService} from "./services/lugares.service";
 import { GeoService } from "./services/geo.service";
 // import { UploadFileService } from "./services/uploadfile.service";
-import { AuthorizationService } from './services/authorization.service'
-import { ReservacionesService } from './services/reservaciones.service'
-import { AuthService } from './services/auth.service'
+// import { AuthorizationService } from './services/authorization.service';
+import { ReservacionesService } from './services/reservaciones.service';
+import { AuthService } from './services/auth.service';
+import { GlobalService } from './services/global.service';
 
 //firebase configuration
 import { AngularFireModule } from 'angularfire2';
@@ -68,7 +69,7 @@ const appRoutes : Routes = [
   {path: 'contacto', component: ContactoComponent},
   {path: 'crear/:id', component: CrearComponent, canActivate: [AdminGuard]},
   {path: 'reservaciones', component: ReservacionesComponent, canActivate: [AdminGuard]},
-  {path: 'edit-reservacion/:id', component: EditReservacionComponent},
+  {path: 'edit-reservacion/:id', component: EditReservacionComponent, canActivate: [AdminGuard]},
   {path:'delete-reservacion/:id', component: DeleteReservacionComponent, canActivate: [AdminGuard]},
   {path:'delete-lugar/:id', component: DeleteLugarComponent, canActivate: [AdminGuard]},
   {path: 'login', component: LoginPageComponent}
@@ -141,7 +142,7 @@ export const environment = {
      HttpClientJsonpModule,  // for linkedin and tumblr share counts
      ShareButtonsModule.forRoot()
   ],
-  providers: [LugaresService, GeoService, AuthorizationService, ReservacionesService, AuthService, AdminGuard, SubscriberGuard], //aqui ponemos los servicios que vamos a necesitar para nuestra app
+  providers: [GlobalService, LugaresService, GeoService, ReservacionesService, AuthService, AdminGuard, SubscriberGuard], //aqui ponemos los servicios que vamos a necesitar para nuestra app
   bootstrap: [AppComponent] //aqui solo colocamos con cual componente vamos a iniciar
 })
 export class AppModule { }

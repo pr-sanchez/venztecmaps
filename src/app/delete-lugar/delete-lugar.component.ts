@@ -27,8 +27,9 @@ export class DeleteLugarComponent implements OnInit {
 
   removeLugar(){
     console.log(this.id);
-    this.lugaresService.borrarLugar(this.id);
-    this.router.navigate([''])
+    this.lugaresService.deleteLugar(this.id);
+    alert("Place deleted succesfully!");
+    this.router.navigate(['/lugares'])
   }
 
 }
