@@ -56,7 +56,7 @@ export class LugaresService{
 
     public obtenerGeoData(direccion){
         //http://maps.google.com/maps/api/geocode/json?address=9-55+calle+72,+Maracay,Venezuela
-        return this.http.get('http://maps.google.com/maps/api/geocode/json?address='+direccion);
+        return this.http.get('https://maps.google.com/maps/api/geocode/json?address='+direccion+"&key=AIzaSyD-SbaVLhWBto55sNpOTiEZJp41s9m9jXY");
     }
 
     public getLugar(id){

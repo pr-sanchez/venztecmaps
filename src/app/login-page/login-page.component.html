@@ -7,6 +7,7 @@
     <button (click)="authService.logout()">Log out</button>
   </div>
   <div *ngIf="user">
+
     <h3>Subscriber: {{user.roles?.subscriber ? true:false}}</h3>
     <h3>Admin: {{user.roles?.admin ? true:false}}</h3>
 </div>

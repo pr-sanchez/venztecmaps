@@ -22,6 +22,8 @@ export class DetalleComponent implements OnInit{
   subscription: any;
   lat:number;
   lng:number;
+  destino: any;
+  origen: any;
 
   public customStyle = [
     {
@@ -156,8 +158,15 @@ export class DetalleComponent implements OnInit{
     this.subscription = this.geo.hits
         .subscribe(hits => this.lugares = hits)
 
+    console.log();
+    this.origen = this.lat,this.lng;
+    this.destino = this.lugar.lat,this.lugar.lng;
+    const origin = this.origen;
+    const destination = this.destino;
+    const API = "https://maps.googleapis.com/maps/api/directions/json?origin=";
+    const resultado = API+origin+"&destination="+destination+"&key=AIzaSyD-SbaVLhWBto55sNpOTiEZJp41s9m9jXY";
+    console.log(resultado);
   }
-
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
@@ -178,6 +187,10 @@ export class DetalleComponent implements OnInit{
     this.boMostrarMensaje = false;
     this.mensajeError = '';
   }
+
+
+
+
 
 
 }

@@ -29,10 +29,11 @@ export class CrearComponent {
                 });
         }
         const URL = 'https://maps.google.com/maps/api/geocode/json';
+        const API = '&key=AIzaSyD-SbaVLhWBto55sNpOTiEZJp41s9m9jXY';
         this.searchField = new FormControl();
         this.results$ = this.searchField.valueChanges
-            .debounceTime(0)
-            .switchMap(query => this.http.get(`${URL}?address=${query}`))
+            .debounceTime(1000)
+            .switchMap(query => this.http.get(`${URL}?address=${query}${API}`))
             .map(response => response.json())//map era para formatear la respuesta del servicio y no tener que procesar tanto al llamarlo
             .map(response => response.results);
         }

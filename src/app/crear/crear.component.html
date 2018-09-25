@@ -40,7 +40,8 @@
     <textarea matInput placeholder="Ingresar URL de la foto del negocio" [(ngModel)]="lugar.foto" name="foto"></textarea>
   </mat-input-container><br>
   <img class="img-responsive" src="{{lugar.foto}}" alt="{{lugar.nombre}}">
-  <!-- Oculto si no se quiere agregar google maps api billing desde la ultima act que hubo, no tengo tarjeta de credito, <h3>Datos de Dirección(Rellenar de ultimo)</h3>
+  <!-- Oculto si no se quiere agregar google maps api billing desde la ultima act que hubo, no tengo tarjeta de credito,  -->
+  <h3>Datos de Dirección(Rellenar de ultimo)</h3>
   <div class="well">
     <form>
         <h3>Buscar dirección en Google Maps</h3>
@@ -49,7 +50,8 @@
     <ul class="list-group">
       <li (click)="seleccionarDireccion(result)" class="list-group-item" *ngFor="let result of results$ | async">{{result.formatted_address}}</li>
     </ul>
-    </div> -->
+    </div>
+  <br>
   <label>Nombre del negocio, Calle y Número de calle (Ser lo mas especifico posible aqui)</label>
   <input type="text" name="" value="" class="form-control" [(ngModel)]="lugar.calle" />
   <label>Ciudad</label>
