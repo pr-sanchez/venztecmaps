@@ -29,7 +29,7 @@ export class CrearComponent {
                 });
         }
         const URL = 'https://maps.google.com/maps/api/geocode/json';
-        const API = '&key=AIzaSyD-SbaVLhWBto55sNpOTiEZJp41s9m9jXY';
+        const API = '&key=<YOUR-API>';
         this.searchField = new FormControl();
         this.results$ = this.searchField.valueChanges
             .debounceTime(1000)
